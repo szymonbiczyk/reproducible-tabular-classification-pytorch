@@ -1,0 +1,28 @@
+experiment_name: mlp
+seed: 42
+
+data:
+  dataset: adult_income
+  raw_dir: data/raw
+  processed_dir: data/processed
+  validation_fraction: 0.2
+  use_official_test_split: true
+
+model:
+  type: mlp
+  hidden_layers: [64, 32]
+  activation: relu
+  dropout: 0.0
+
+training:
+  epochs: 50
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0
+  early_stopping_patience: 5
+  selection_metric: roc_auc
+
+output:
+  runs_dir: artifacts/runs
+  save_best_checkpoint: true
+

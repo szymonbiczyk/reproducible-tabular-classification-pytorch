@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reproducible-tabular-classification-pytorch"
+version = "0.1.0"
+description = "A small, reproducible PyTorch project for tabular binary classification."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "pyyaml",
+    "joblib",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
