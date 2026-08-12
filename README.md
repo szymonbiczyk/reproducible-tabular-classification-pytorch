@@ -40,6 +40,15 @@ python compare.py --runs-dir artifacts/runs
 python predict.py --run-dir artifacts/runs/<run-id> --input examples/person.json
 ```
 
+## Data contract
+
+- `adult.data` is the original training source and `adult.test` is the official final test set from the UCI Adult dataset.
+- The validation split is created only from `adult.data`, with target stratification and the configured random seed.
+- The official test set is reserved for final evaluation and must not be used for model selection.
+- A `?` value is treated as missing and surrounding whitespace is removed from string columns.
+- The target maps `<=50K` and `<=50K.` to `0`, and `>50K` and `>50K.` to `1`.
+- Model preprocessing will be fitted only on the training split in the next project step.
+
 ## Intentionally out of scope
 
 - Docker and Kubernetes
@@ -52,9 +61,7 @@ python predict.py --run-dir artifacts/runs/<run-id> --input examples/person.json
 
 ## Current status
 
-**Step 1 — repository skeleton.**
+**Step 2 - data contract and loader.**
 
-The package layout, experiment configuration placeholders, CLI skeletons, artifact directories, and example prediction input are present. Data downloading, preprocessing, training, evaluation, comparison, and prediction are not implemented yet.
-
-The next planned step is to define the data contract and implement the Adult Income loader.
+The official UCI Adult files can be downloaded and loaded, raw values are cleaned according to the documented contract, and a deterministic stratified validation split is created from the original training source. Model preprocessing, training, evaluation, comparison, and prediction are not implemented yet.
 

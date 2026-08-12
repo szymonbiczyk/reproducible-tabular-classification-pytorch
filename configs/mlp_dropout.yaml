@@ -2,11 +2,11 @@ experiment_name: mlp_dropout
 seed: 42
 
 data:
-  dataset: adult_income
   raw_dir: data/raw
   processed_dir: data/processed
   validation_fraction: 0.2
-  use_official_test_split: true
+  download: true
+  target_column: income
 
 model:
   type: mlp
